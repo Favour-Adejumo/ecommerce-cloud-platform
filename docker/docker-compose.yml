@@ -1,0 +1,22 @@
+services:
+   postgres_db:
+        image: postgres:16-alpine
+        container_name: db
+        environment:
+           POSTGRES_DB: ${DB_NAME}
+           POSTGRES_USER: ${DB_USER}
+           POSTGRES_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - "5432:5432"
+        volumes:
+            - pg_persistent_data:/var/lib/postgresql/data
+        networks:
+            - backend_network
+        restart: unless-stopped
+volumes: 
+    pg_persistent_data:
+        driver: local
+networks:
+    backend_network:
+        name: flask_db_isolated_network
+        driver: bridge

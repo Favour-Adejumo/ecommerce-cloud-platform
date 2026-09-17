@@ -1,0 +1,17 @@
+# Docker Configuration & Secrets
+docker/.env
+.env
+.env.example
+
+# Python Virtual Environments
+venv/
+app/venv/
+
+# Python Cache and Compiled bytecode
+__pycache__/
+*.pyc
+
+# Terraform local overrides/secrets
+.terraform/
+*.tfstate
+*.tfstate.backup
