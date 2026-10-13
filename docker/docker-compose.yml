@@ -28,6 +28,11 @@ services:
     depends_on:
       - postgres_db
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
 
 volumes:
   pg_persistent_data:
