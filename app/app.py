@@ -4,6 +4,10 @@ import os
 
 app = Flask(__name__)
 
+@app.route("/health")
+def health():
+      return {"status", "healthy"}, 200
+
 def get_db_connection():
       connection = psycopg2.connect(
             host=os.environ.get("DB_HOST"),
